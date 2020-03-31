@@ -77,19 +77,17 @@
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
       $.ajax({
-        url: "https://revents-api.herokuapp.com/api/tmc20/mmxx",
+        url: "https://revents-api.herokuapp.com/api/tmc20/finint",
         method: "GET",
         contentType: "application/json",
       }).done((res) => {
         console.log(res);
         const total = res.data.length;
-        const free = res.data.filter(c => c.category === "Free").length;
-        const vip = res.data.filter(c => c.category === "VIP").length;
         const tr = res.data.map((c) => `
           <tr>
             <td>${c.firstName}</td>
             <td>${c.lastName}</td>
-            <td>${c.category}</td>
+            <td>${c.email}</td>
           </tr>
         `);
         $("#totalReg").text(total);
